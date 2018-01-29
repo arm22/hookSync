@@ -1,0 +1,22 @@
+{
+  "name": "hooksync",
+  "version": "0.0.1",
+  "description": "Tool to sync local hooks from directory to .git/hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arm22/hookSync.git"
+  },
+  "author": "Austin Meyers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arm22/hookSync/issues"
+  },
+  "homepage": "https://github.com/arm22/hookSync#readme",
+  "dependencies": {
+    "fs-promise-util": "^1.0.2"
+  }
+}
