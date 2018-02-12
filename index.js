@@ -1,19 +1,25 @@
-'use strict';
+#! /usr/bin/env node
 
 const fs = require('fs-promise-util').default;
 
 const REMOTE_HOOKS_PATH = `${process.cwd()}/hooks/`;
 const LOCAL_HOOKS_PATH = `${process.cwd()}/.git/hooks/`;
 
+main(process.argv[2]).then(() => {
+	console.log('hooksync complete')
+}).catch((err) => {
+	console.log(err);
+});
 
-exports.install = async function () {
+async function main (arg) {
+	const CLI_PATH = arg;
 	let remoteList,
 		localList,
 		copyList,
 		conflictingFiles;
 
-	// Await process of listing files in remote and local dirs
-	[remoteList, localList] = await getDirList(REMOTE_HOOKS_PATH, LOCAL_HOOKS_PATH);
+	// Await process of listing files in remote (or dir passed as option) and local dirs
+	[remoteList, localList] = await getDirList(CLI_PATH || REMOTE_HOOKS_PATH, LOCAL_HOOKS_PATH);
 
 	// Find files that exist both locally and remotely
 	conflictingFiles = localList.filter(isInArray(remoteList));
@@ -34,14 +40,12 @@ exports.install = async function () {
 	copyList = copyList.filter(Boolean);
 
 	// Write files to local hooks dir
-	console.log(`writing ${copyList.length} files`);
+	console.log(`discovered ${copyList.length} hook(s)`);
 	mapAndPromisify(copyList, (value) => {
 		let newPath = value.replace('hooks', '.git/hooks');
-		console.log(`symLinking ${value} to ${newPath}`);
+		console.log(`linking: ${value} -> ${newPath}`);
 		return fs.symlink(value, newPath);
 	});
-
-	return 'complete';
 }
 
 function mapAndPromisify (arr, resolveFunc) {
@@ -90,6 +94,6 @@ function isInArray (arr) {
 
 function notInArray (arr) {
 	return function (value) {
-		return (!arr.includes(value) && value !== 'hookSync.js');
+		return !arr.includes(value);
 	};
 }
