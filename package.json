@@ -1,11 +1,12 @@
 {
   "name": "hooksync",
   "version": "0.0.2",
+  "engines": {
+    "node": ">=8.9.3"
+  },
   "description": "Tool to sync local hooks from directory to .git/hooks",
   "main": "index.js",
-  "bin": {
-    "install": "./index.js"
-  },
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
