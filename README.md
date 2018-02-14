@@ -10,7 +10,7 @@ A developer tool to synchronize and install [githooks](https://git-scm.com/book/
 
 ### Installing
 
-Install the module as a dev dependency of your projext
+Install the module as a dev dependency of your project.
 
 ```Bash
 npm install hooksync -D
@@ -27,7 +27,7 @@ Add hooksync as the "postinstall" script of your `package.json`. This will trigg
 },
 ```
 
-Alternatively pass the full PATH of the directory of the folder you want to have parsed and linked to `.git/hooks`
+Alternatively pass the full PATH of the directory of the folder you want to have parsed and linked to `.git/hooks`.
 
 ```Javascript
 "scripts": {
@@ -35,7 +35,7 @@ Alternatively pass the full PATH of the directory of the folder you want to have
 },
 ```
 
-hooksync can also be used from the command line, with the same optional PATH argument
+hooksync can also be used from the command line, with the same optional PATH argument.
 
 ```Bash
 hooksync
@@ -46,11 +46,11 @@ hooksync /path/to/my/hooks
 
 ## Built With
 
-* [fs-promise-util](https://www.npmjs.com/package/fs-promise-util) - Promisified file ops in Node (soon to be native)
+* [fs-promise-util](https://www.npmjs.com/package/fs-promise-util) - Promisified file-op in Node (soon to be native).
 
 ## Contributing
 
-Feel free to contribute on GitHub
+Feel free to contribute on GitHub.
 
 ## Versioning
 
@@ -64,5 +64,5 @@ See also the list of [contributors](https://github.com/arm22/hookSync/graphs/con
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
